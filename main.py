@@ -4,6 +4,7 @@ from reportlab.pdfgen.canvas import Canvas
 from reportlab.lib.colors import red
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.platypus import SimpleDocTemplate
 
 from pathlib import Path
 import os
@@ -36,8 +37,14 @@ canvas.line(a_4[0] - w_i*cm, w_i*cm, a_4[0] - w_i*cm, a_4[1]-w_i*cm)
 print(LETTER, A4)
 #Если нужен второй шрифт
 canvas.setFont("Times New Roman", 28)
-canvas.drawString(2 * inch, 5 * inch, "Ололо.")
-
 canvas.drawInlineImage("p.png", 2 * inch, 5 * inch)
+canvas.drawString(2 * inch + 10, 5 * inch + 20, "Ололо.")
 
+my_data = [
+    ['id', 'n', 'c', 'm', 'g'],
+    (1, 'J', 'F', 75, 'FE'),
+    (2, 'M', 'T', 85, 'M'),
+           ]
+
+canvas.showPage()
 canvas.save()
